@@ -39,6 +39,12 @@ namespace SilentAuctionConsole.Classes
             Auction newAuction = new Auction(auctionname, startdate, enddate);
             return newAuction;
         }
+
+        public Auction EndAuction(Auction auction)
+        {
+            auction.IsLive = false;
+            return auction;
+        }
     }
 
 }
