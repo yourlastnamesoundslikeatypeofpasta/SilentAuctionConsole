@@ -13,9 +13,12 @@ namespace SilentAuctionConsole.Classes
         public int RetailAmount { get; set; }
         public int MinimumBid { get; set; }
 
-        public Item()
+        public Item(int id, string name, int retailamount, int minimumbid)
         {
-
+            Id = id;
+            Name = name;
+            RetailAmount = retailamount;
+            MinimumBid = minimumbid;
         }
     }
 }
