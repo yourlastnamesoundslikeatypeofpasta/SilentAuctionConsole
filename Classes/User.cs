@@ -34,6 +34,12 @@ namespace SilentAuctionConsole.Classes
             return newUser;
         }
 
+        public List<User> RemoveUser(List<User> users, User user)
+        {
+            users.Remove(user);
+            return users;
+        }
+
         public Auction CreateAuction(string auctionname, DateTime startdate, DateTime enddate)
         {
             Auction newAuction = new Auction(auctionname, startdate, enddate);
