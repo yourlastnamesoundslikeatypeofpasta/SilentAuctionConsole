@@ -34,9 +34,9 @@ namespace SilentAuctionConsole.Classes
             return newUser;
         }
 
-        public Auction CreateAuction(DateTime startdate, DateTime enddate)
+        public Auction CreateAuction(string auctionname, DateTime startdate, DateTime enddate)
         {
-            Auction newAuction = new Auction(startdate, enddate);
+            Auction newAuction = new Auction(auctionname, startdate, enddate);
             return newAuction;
         }
     }
