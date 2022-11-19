@@ -10,6 +10,7 @@ namespace SilentAuctionConsole.Classes
     {
         public string Name { get; set; }
         public List<Item> ItemList { get; set; } = new();
+        public Dictionary<int BidNumber, >
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool IsLive { get; set; } = false;
