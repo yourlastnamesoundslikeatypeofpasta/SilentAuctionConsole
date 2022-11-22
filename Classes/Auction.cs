@@ -20,6 +20,42 @@ namespace SilentAuctionConsole.Classes
             Name = name;
             StartDate = startdate;
             EndDate = enddate;
+
+        }
+
+        public void AddItem(Item item)
+        {
+            ItemList.Add(item);
+        }
+
+        public void RemoveItem(Item item)
+        {
+            ItemList.Add(item);
+        }
+
+        public void AddBid(Bid bid)
+        {
+            BidList.Add(bid);
+        }
+
+        public void RemoveBid(Bid bid)
+        {
+            BidList.Remove(bid);
+        }
+
+        public void StartAuction()
+        {
+            IsLive = true;
+        }
+
+        public void EndAuction()
+        {
+            IsLive = false;
+        }
+
+        public void RenameAuction(string newName)
+        {
+            Name = newName;
         }
     }
 }
