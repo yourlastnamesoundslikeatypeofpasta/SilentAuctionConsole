@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SilentAuctionConsole.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace SilentAuctionConsole.Classes
 {
-    internal class User
+    public class User
     {
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        List<Bid> ApprovedBidList { get; set; } = new();
+        public List<Bid> ApprovedBidList { get; set; } = new();
 
 
         public User(int id, string username, string password)
@@ -22,12 +23,13 @@ namespace SilentAuctionConsole.Classes
         }
     }
 
-    internal class Admin : User
+    public class Admin : User
     {
         public Admin(int id, string username, string password) : base(id, username, password)
         {
 
         }
+
 
         public User AddUser(List<User> users, string username, string password)
         {
@@ -61,3 +63,4 @@ namespace SilentAuctionConsole.Classes
     }
 
 }
+
