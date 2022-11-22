@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SilentAuctionConsole.Classes
 {
-    internal class Bid
+    public class Bid
     {
         public User User { get; set; }
         public int BidAmount { get; set; }

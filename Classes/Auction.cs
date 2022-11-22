@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SilentAuctionConsole.Classes
 {
-    internal class Auction
+    public class Auction
     {
         public string Name { get; set; }
         public List<Item> ItemList { get; set; } = new();
