@@ -11,6 +11,8 @@ namespace SilentAuctionConsole.Classes
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        List<Bid> ApprovedBidList { get; set; } = new();
+
 
         public User(int id, string username, string password)
         {
@@ -46,9 +48,14 @@ namespace SilentAuctionConsole.Classes
             return newAuction;
         }
 
+        public Auction StartAuction(Auction auction)
+        {
+            auction.StartAuction();
+            return auction;
+        }
         public Auction EndAuction(Auction auction)
         {
-            auction.IsLive = false;
+            auction.EndAuction();
             return auction;
         }
     }
