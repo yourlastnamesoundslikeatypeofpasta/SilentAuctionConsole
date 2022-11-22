@@ -33,9 +33,14 @@ namespace SilentAuctionConsole.Classes
             ItemList.Add(item);
         }
 
-        public void AddBid(Bid bid)
+        public bool AddBid(Bid bid)
         {
-            BidList.Add(bid);
+            if (bid.BidAmount > bid.Item.MinimumBid)
+            {
+                BidList.Add(bid);
+                return true;
+            }
+            return false;
         }
 
         public void RemoveBid(Bid bid)
