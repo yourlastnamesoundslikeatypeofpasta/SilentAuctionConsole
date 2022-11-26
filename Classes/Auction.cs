@@ -8,7 +8,7 @@ namespace SilentAuctionConsole.Classes
 {
     public class Auction
     {
-        int ID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public Dictionary<int, Item> ItemDictionary = new();
         public List<Bid> BidList { get; set; } = new();
