@@ -12,13 +12,32 @@ namespace SilentAuctionConsole.Classes
         public string Name { get; set; }
         public int RetailAmount { get; set; }
         public int MinimumBid { get; set; }
+        public Category ItemCategory { get; set; }
 
-        public Item(int id, string name, int retailamount, int minimumbid)
+        public Item(int id,
+                    string name,
+                    int retailamount,
+                    int minimumbid,
+                    Category category)
         {
             Id = id;
             Name = name;
             RetailAmount = retailamount;
             MinimumBid = minimumbid;
+            ItemCategory = category;
         }
     }
+
+    public enum Category
+    {
+        Automotive, 
+        BeautyAndHealth, 
+        Clothing, 
+        Sports, 
+        Outdoors, 
+        IndustrialAndScientific, 
+        Toys
+    }
 }
+
+
