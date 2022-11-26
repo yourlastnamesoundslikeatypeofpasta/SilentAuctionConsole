@@ -12,15 +12,11 @@ namespace SilentAuctionConsole.Classes
     {
         public List<Auction> Auctions { get; set; } = new();
         public List<User> Users { get; set; } = new();
-        public User LoggedInUser { get; set; }
+        public User? LoggedInUser { get; set; }
 
         public SilentAuction()
         {
-            // test users and auction
             CreateStartupAdmin();
-            // Login();
-            // CreateTestUsers();
-            // CreateTestSilentAuction();
         }
 
         public void CreateStartupAdmin()
