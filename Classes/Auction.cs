@@ -10,8 +10,7 @@ namespace SilentAuctionConsole.Classes
     {
         int ID { get; set; }
         public string Name { get; set; }
-        public List<Item> ItemList { get; set; } = new();
-        public Dictionary<int, Item> itemDictionary = new();
+        public Dictionary<int, Item> ItemDictionary = new();
         public List<Bid> BidList { get; set; } = new();
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -34,12 +33,14 @@ namespace SilentAuctionConsole.Classes
 
         public void AddItem(Item item)
         {
-            ItemList.Add(item);
+            // dict kvp:
+            //      Key:ID, Value:Item
+            ItemDictionary.Add(item.Id, item);
         }
 
         public void RemoveItem(Item item)
         {
-            ItemList.Add(item);
+            ItemDictionary.Remove(item.Id);
         }
 
         public bool AddBid(Bid bid)
