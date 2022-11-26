@@ -39,16 +39,34 @@ namespace SilentAuctionConsole.Classes
         public void CreateTestSilentAuction()
         {
 
-
-            // create auctions
-            DateTime startdate = new DateTime(2022, 11, 20);
-            DateTime enddate = new DateTime(2022, 12, 20);
-            Auction? newAuction = CreateAuction("November Auction", startdate, enddate);
-            if (newAuction != null)
+            DateTime GetRandomDateTime(int year)
             {
-                Auctions.Add(newAuction);
+
+                var rnd = new Random();
+
+                // get random month
+                int month = rnd.Next(1, 13);
+
+                // get random day
+                int numOfDays = DateTime.DaysInMonth(year, month) + 1;
+                int day = rnd.Next(1, numOfDays);
+                return new DateTime(year, month, day);
+
             }
 
+
+            for (int i = 0; i <= 100; i++)
+            {
+                DateTime startdate = GetRandomDateTime(2022);
+                DateTime enddate = startdate.AddMonths(1);
+                string monthName = System.Globalization.DateTimeFormatInfo.CurrentInfo.GetMonthName(startdate.Month);
+                Auction? newAuction = CreateAuction($"{monthName} Auction", startdate, enddate);
+
+                if (newAuction != null)
+                {
+                    Auctions.Add(newAuction);
+                }
+            }
 
         }
 
@@ -78,7 +96,6 @@ namespace SilentAuctionConsole.Classes
             if (LoggedInUser is Admin)
             {
                 Auction newAuction = new(Auctions, name, startdate, enddate);
-                Auctions.Add(newAuction);
                 return newAuction;
             }
             return null;
@@ -95,6 +112,16 @@ namespace SilentAuctionConsole.Classes
             }
 
             return null;
+        }
+
+        public void ViewAllAuctions()
+        {
+            Console.WriteLine("ID; Name; StartDate; EndDate; IsLive");
+
+            foreach (Auction auction in Auctions)
+            {
+                Console.WriteLine($"ID: {auction.ID};Name: {auction.Name}; StartDate: {auction.StartDate}; EndDate: {auction.EndDate}; IsLive: {auction.IsLive}");
+            }
         }
     }
 }
