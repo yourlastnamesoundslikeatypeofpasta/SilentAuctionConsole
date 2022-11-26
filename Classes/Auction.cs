@@ -8,19 +8,28 @@ namespace SilentAuctionConsole.Classes
 {
     public class Auction
     {
+        int ID { get; set; }
         public string Name { get; set; }
         public List<Item> ItemList { get; set; } = new();
+        public Dictionary<int, Item> itemDictionary = new();
         public List<Bid> BidList { get; set; } = new();
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool IsLive { get; set; } = false;
 
-        public Auction(string name, DateTime startdate, DateTime enddate)
+        public Auction(List<Auction> auctionlist, string name, DateTime startdate, DateTime enddate)
         {
+            ID = CreateAuctionID(auctionlist);
             Name = name;
             StartDate = startdate;
             EndDate = enddate;
 
+        }
+
+        public int CreateAuctionID(List<Auction> auctionList)
+        {
+            int auctionID = auctionList.Count + 1;
+            return auctionID;
         }
 
         public void AddItem(Item item)
