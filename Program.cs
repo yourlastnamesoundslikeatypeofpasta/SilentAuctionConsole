@@ -5,6 +5,11 @@ main();
 
 void main()
 {
+    Test();
+}
+
+void Test()
+{
     SilentAuction silentauction = new();
     bool login = silentauction.Login();
 
@@ -27,10 +32,6 @@ void main()
             Console.WriteLine("No logged in user");
         }
     }
-
-
-
 }
-
 
 
