@@ -17,24 +17,41 @@ namespace SilentAuctionConsole.Classes
         public SilentAuction()
         {
             // test users and auction
-            CreateTestSilentAuction();
+            CreateStartupAdmin();
+            // Login();
+            // CreateTestUsers();
+            // CreateTestSilentAuction();
         }
 
-        public void CreateTestSilentAuction()
+        public void CreateStartupAdmin()
         {
-            // create admin & add user to Users
+            // create admin
             Admin admin = new(1, "admin", "demo123");
             Users.Add(admin);
+        }
 
+
+        public void CreateTestUsers()
+        {
             // create regular & add user to Users
-            User regularUser = admin.AddUser(Users, "christian", "demo123");
-            Users.Add(regularUser);
+            User? newUserChristian = AddUser("christian", "demo123");
+            if (newUserChristian != null)
+            {
+                Console.WriteLine($"Test user created: {newUserChristian.Username}");
+            }
+        }
+        public void CreateTestSilentAuction()
+        {
+
 
             // create auctions
             DateTime startdate = new DateTime(2022, 11, 20);
             DateTime enddate = new DateTime(2022, 12, 20);
-            Auction newAuction = admin.CreateAuction("November Auction", startdate, enddate);
-            Auctions.Add(newAuction);
+            Auction? newAuction = CreateAuction("November Auction", startdate, enddate);
+            if (newAuction != null)
+            {
+                Auctions.Add(newAuction);
+            }
 
 
         }
@@ -58,6 +75,30 @@ namespace SilentAuctionConsole.Classes
 
             }
             return false;
+        }
+
+        public Auction? CreateAuction(string name, DateTime startdate, DateTime enddate)
+        {
+            if (LoggedInUser is Admin)
+            {
+                Auction newAuction = new(Auctions, name, startdate, enddate);
+                Auctions.Add(newAuction);
+                return newAuction;
+            }
+            return null;
+        }
+
+        public User? AddUser(string username, string password)
+        {
+            if (LoggedInUser is Admin)
+            {
+                int id = Users.Count + 1;
+                User newUser = new(id, username, password);
+                Users.Add(newUser);
+                return newUser;
+            }
+
+            return null;
         }
     }
 }
