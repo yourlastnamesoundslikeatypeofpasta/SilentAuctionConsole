@@ -6,7 +6,6 @@ main();
 void main()
 {
     Test();
-    ShowIntroMenu();
 }
 
 void Test()
@@ -41,16 +40,4 @@ void Test()
     }
 }
 
-void ShowIntroMenu()
-{
-    // display welcome
-    //string welcomeString = "Wecome to Silent Auction";
-    //Console.WriteLine(welcomeString);
-    //Console.WriteLine(new String('-', welcomeString.Length));
 
-
-
-    // Console.WriteLine(response);
-
-
-}
